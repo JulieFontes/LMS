@@ -14,12 +14,15 @@ namespace CanvasApp
             bool keepGoing = true;
 
             while (keepGoing) {
-                Console.WriteLine("Menu:\nA. Add a student\nB. List all enrolled students\nC. Search for a student\nD. Add a course\nEXIT. ");
+                Console.WriteLine("Menu:\nA. Add a student\nUS. Update Student \nB. List all enrolled students\nC. Search for a student\nD. Add a course\nEXIT. ");
                 string choice = Console.ReadLine().toUpper() ?? string.Empty;
 
                 switch (choice) {
                     case "A":
                         studentHelper.CreateStudent();
+                        break;
+                    case "AU":
+                        studentHelper.UpdateStudent();
                         break;
                     
                     case "B":

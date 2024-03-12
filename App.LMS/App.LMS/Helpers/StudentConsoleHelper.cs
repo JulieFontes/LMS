@@ -1,5 +1,6 @@
 ﻿using Library.LMS.Models;
 using Library.LMS.Services;
+using System.Security.Cryptography.X509Certificates;
 
 namespace App.LMS.Helpers 
 {
@@ -8,9 +9,7 @@ namespace App.LMS.Helpers
     {
         private StudentService studentService = new StudentService();
         
-        public void CreateStudent() {
-
-            
+        public void CreateOrUpdateStudent(Person? studentS = null) {
             
                 Console.WriteLine("Enter a name: ");
                 string? name = Console.ReadLine();
@@ -27,12 +26,20 @@ namespace App.LMS.Helpers
 
                 var student = new Person { Name = name ?? string.Empty, Classification = classEnum };
 
-                studentService.studentList.Add(student);
+                bool isCreate = false;
+                if (selectedS != null)
+                {
+                    isCreate = true;
+                    selectedS = new Person();
+                }
 
-                studentService.List;
+                selectedS.Name = name;
+                selectedS.Classification = classification;
+
+                if(isCreate)    
+                    studentService.Add(student);
+           
                 
-            
-            
         }
 
         public void ListStudents()
@@ -49,7 +56,17 @@ namespace App.LMS.Helpers
 
             studentService.Search(query).ToList().ForEach(s => Console.WriteLine(s));
 
-        }
+        
+
+            public void UpdateStudent() {
+                Console.WriteLine("Select student to update.");
+
+                ListStudents();
+                string? selectionStr = Console.ReadLine();
+                if (int.TryParse(selectionStr, out int selectionInt)) {
+                    studentService.studentList.Students.FirstOrDefault(s => s.Id == selectionInt);
+                }
+            }
     }
 
 }
