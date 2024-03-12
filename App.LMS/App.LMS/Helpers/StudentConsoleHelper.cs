@@ -7,12 +7,11 @@ namespace App.LMS.Helpers
     internal class StudentConsoleHelper 
     {
         private StudentService studentService = new StudentService();
-        public void CreateStudentRecord() {
+        
+        public void CreateStudent() {
 
-            bool keepGoing = true;
-
-            while (keepGoing)
-            {
+            
+            
                 Console.WriteLine("Enter a name: ");
                 string? name = Console.ReadLine();
                 Console.WriteLine("Enter the student's classification: [Freshman (1), Sophomore (2), Junior (3), Senior (4)]");
@@ -31,20 +30,26 @@ namespace App.LMS.Helpers
                 studentService.studentList.Add(student);
 
                 studentService.List;
-
-                Console.WriteLine("\nWould you like to continue? (y/n)");
-                string continue = Console.ReadLine().ToLower() ?? "n";
                 
-                if(continue == "n")
-                    keepGoing = false;
-                
-            }
+            
             
         }
 
         public void ListStudents()
         { studentService.Students.ForEach(s => Console.WriteLine(s)) }
 
+        public void SearchandListStudents(){ 
+            Console.WriteLine("Enter a query: ");
+            string query = Console.ReadLine();
+            
+            if(query == null){
+                Console.WriteLine("Invalid Query.");
+                return;
+            }
+
+            studentService.Search(query).ToList().ForEach(s => Console.WriteLine(s));
+
+        }
     }
 
 }

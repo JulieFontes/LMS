@@ -20,5 +20,9 @@ namespace Library.LMS.Services
             }
         }
 
+        //returns a reference to students found. If returned list type instead w ToList(), it would be a deep copy 
+        public IEnumerable<Person> Search(string query) 
+        { return studentList.Where(s => s.Name.ToUpper().Contains(query.ToUpper())); }
+
     }
 }
