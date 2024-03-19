@@ -6,9 +6,13 @@ namespace Library.LMS.Services
 	public class CourseService
 	{
 		private	 List<Course> courseList = new List<Course>();
-        private static _instance;
+        private static CourseService? _instance;
 
-        public static CourseService? Current
+        private CourseService()
+        {
+            courseList = new List<Course>();
+        }
+        public static CourseService Current
         {
             get
             {
@@ -18,11 +22,6 @@ namespace Library.LMS.Services
             }
         }
 
-        private static CourseService()
-        {
-            studentList = new List<Course>();
-        }
-
         public void Add(Course c) 
 		{ courseList.Add(c); }
 	
@@ -30,10 +29,6 @@ namespace Library.LMS.Services
 		{ get { 
 				return courseList; 
 			} 
-		}
-
-		public void UpdateCourse() { 
-			
 		}
 
         public IEnumerable<Course> Search(string query)

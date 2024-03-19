@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Library.LMS.Models
 {
-    internal class Assignment
+    public class Assignment
     {
         public string Name { get; set; }
 
         public string Description { get; set; }
 
-        public float TotalAvailablePoints { get; set; }
+        public decimal TotalAvailablePoints { get; set; }
 
         public DateTime DueDate { get; set; }
 
@@ -23,6 +23,8 @@ namespace Library.LMS.Models
             DueDate = DateTime.MinValue;
         }
 
-        //public override string ToString() { }
+        public override string ToString() {
+            return $"({DueDate}) {Name}";
+        }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Library.LMS.Models
 {
-    internal class ContentItem
+    public class ContentItem
     {
 
         public string Name { get; set; }

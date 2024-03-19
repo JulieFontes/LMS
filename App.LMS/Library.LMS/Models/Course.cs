@@ -14,9 +14,9 @@ namespace Library.LMS.Models
 
         public string Description { get; set; }
 
-        List<Person> Roster;
-        List<Module> Modules;
-        List<Assignment> Assingments;
+        public List<Person> Roster { get; set; }
+        public List<Module> Modules { get; set; }
+        public List<Assignment> Assignments { get; set; }
 
         public Course() {
             Name = string.Empty;
@@ -25,11 +25,19 @@ namespace Library.LMS.Models
 
             Roster = new List<Person>();
             Modules = new List<Module>();
-            Assingments = new List<Assignment>();
+            Assignments = new List<Assignment>();
         }
 
         public override string ToString(){
             return $"{Code} - {Name}";
+        }
+
+        public string DetailDisplay {
+            get {
+                return $"{ToString()}\n{Description}\n\n" +
+                    $"Roster:\n{string.Join("\n", Roster.Select(s => s.ToString().ToArray()))}\n\n" +
+                    $"Assignments:\n{string.Join("\n", Assignments.Select(a => a.ToString().ToArray()))}"; 
+            }
         }
     }
 }

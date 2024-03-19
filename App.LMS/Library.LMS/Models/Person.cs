@@ -4,7 +4,7 @@
     {
         public string Name { get; set; }
 
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
         public Dictionary<int, double> Grades { get; set; }
 
@@ -18,7 +18,7 @@
         {
             Name = string.Empty;
             Grades = new Dictionary<int, double>();
-            Id = Guid.NewGuid();
+            Id = string.Empty;
         }
 
         public override string ToString()

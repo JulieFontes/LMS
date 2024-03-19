@@ -10,19 +10,20 @@ namespace Library.LMS.Services
     public class StudentService
     {
         private List<Person> studentList;
-        private static _instance;
+        private static StudentService? _instance;
 
-        public static StudentService? Current
+        private StudentService()
+        {
+            studentList = new List<Person>();
+        }
+
+        public static StudentService Current
         {
             get { 
                 if(_instance == null)
                     _instance = new StudentService();
                 return _instance;
             }
-        }
-
-        private static StudentService() {
-            studentList = new List<Person>();
         }
 
         public void Add(Person s) 
