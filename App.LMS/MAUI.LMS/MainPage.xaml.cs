@@ -4,7 +4,6 @@ namespace MAUI.LMS
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
 
         public MainPage()
         {
@@ -14,11 +13,13 @@ namespace MAUI.LMS
 
         private void InstructorClicked(object sender, EventArgs e)
         {
-           
+            Shell.Current.GoToAsync("//Instructor");
         }
 
         private void StudentClicked(object sender, EventArgs e) 
-        { }
+        {
+            Shell.Current.GoToAsync("//Student");
+        }
     }
 
 }

@@ -8,5 +8,9 @@
             Text="INTRUCTOR VIEW"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <Button
+            Text="Back"
+            Clicked="BackClicked"
+            />
     </VerticalStackLayout>
 </ContentPage>
