@@ -9,12 +9,14 @@ namespace Library.LMS.Services
 {
     public class StudentService
     {
-        private List<Person> studentList;
         private static StudentService? _instance;
+        public IEnumerable<Student>? Students {
+            get { return FakeDatabase.People.Where(p => p is Student).Select(p => p as Student); }
+        }
 
         private StudentService()
         {
-            studentList = new List<Person>();
+
         }
 
         public static StudentService Current
@@ -27,17 +29,11 @@ namespace Library.LMS.Services
         }
 
         public void Add(Person s) 
-        { studentList.Add(s); }
-
-        public List<Person> Students {
-            get { 
-                return studentList;
-            }
-        }
+        { FakeDatabase.People.Add(s); }
 
         //returns a reference to students found. If returned list type instead w ToList(), it would be a deep copy 
-        public IEnumerable<Person> Search(string query) 
-        { return studentList.Where(s => s.Name.ToUpper().Contains(query.ToUpper())); }
+        public IEnumerable<Student?> Search(string query) 
+        { return Students.Where(s => (s != null) && s.Name.ToUpper().Contains(query.ToUpper())); }
 
     }
 }

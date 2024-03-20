@@ -3,15 +3,15 @@ using Library.LMS.Models;
 
 namespace Library.LMS.Services
 {
-	public class CourseService
-	{
-		private	 List<Course> courseList = new List<Course>();
+    public class CourseService
+    {
         private static CourseService? _instance;
-
+        
         private CourseService()
         {
-            courseList = new List<Course>();
+            
         }
+
         public static CourseService Current
         {
             get
@@ -23,17 +23,15 @@ namespace Library.LMS.Services
         }
 
         public void Add(Course c) 
-		{ courseList.Add(c); }
+		{ FakeDatabase.Courses.Add(c); }
 	
 		public List<Course> Courses
-		{ get { 
-				return courseList; 
-			} 
-		}
+        { get { return FakeDatabase.Courses; } }
+		
 
         public IEnumerable<Course> Search(string query)
         { 
-			return courseList.Where
+			return Courses.Where
 				(s => s.Name.ToUpper().Contains(query.ToUpper())
 				|| s.Code.ToUpper().Contains(query.ToUpper())
 				|| s.Description.ToUpper().Contains(query.ToUpper())
