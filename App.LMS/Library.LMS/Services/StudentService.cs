@@ -10,7 +10,7 @@ namespace Library.LMS.Services
     public class StudentService
     {
         private static StudentService? _instance;
-        public IEnumerable<Student>? Students {
+        public IEnumerable<Student?> Students {
             get { return FakeDatabase.People.Where(p => p is Student).Select(p => p as Student); }
         }
 
