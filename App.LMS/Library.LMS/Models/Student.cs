@@ -10,11 +10,11 @@ namespace Library.LMS.Models
     {
         public Dictionary<int, double> Grades { get; set; }
 
-        public PersonClassification Classification { get; set; }
+        public StudentClassification Classification { get; set; }
 
         public Student()
         { Grades = new Dictionary<int, double>(); }
-        public enum PersonClassification
+        public enum StudentClassification
         {
             Freshman, Sophomore, Junior, Senior
         }

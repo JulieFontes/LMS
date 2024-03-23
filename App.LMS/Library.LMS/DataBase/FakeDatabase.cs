@@ -5,19 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 using Library.LMS.Models;
 
-namespace MAUI.LMS.Database
+namespace Library.LMS.Database
 {
     public static class FakeDatabase
     {
+        private static List<Person> people = new List<Person>();
+        private static List<Course> courses = new List<Course>();
         public static List<Person> People
         {
-            get { return new List<Person>(); }   
+            get { return people; }
         }
 
         public static List<Course> Courses
         {
-            get { return new List<Course>(); }
+            get { return courses; }
         }
-    
     }
 }

@@ -2,12 +2,37 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUI.LMS.Views.InstructorView"
-             Title="InstructorView">
+             Title="InstructorView"
+             NavigatedTo="ContentPage_NavigatedTo"
+             >
     <VerticalStackLayout>
         <Label 
             Text="INTRUCTOR VIEW"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <ListView
+            ItemsSource="{Binding People}"
+            SelectedItem="{Binding SelectedPerson, Mode=TwoWay}">
+            <!--<ListView.ItemTemplate>
+                <DataTemplate
+                    <ViewCall>
+            
+                    </ViewCall>
+                </DataTemplate>    
+            </ListView.ItemTemplate-->
+        </ListView>
+        <Button
+            Text="Add Enrollment"
+            Clicked="AddEnrollmentClicked"
+            />
+        <Button
+            Text="Edit Enrollment"
+            Clicked="EditEnrollmentClicked"
+            />
+        <Button
+            Text="Remove Enrollment"
+            Clicked="RemoveEnrollmentClicked"
+            />
         <Button
             Text="Back"
             Clicked="BackClicked"

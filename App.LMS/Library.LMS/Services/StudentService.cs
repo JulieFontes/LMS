@@ -1,4 +1,5 @@
 ﻿using Library.LMS.Models;
+using Library.LMS.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,9 @@ namespace Library.LMS.Services
 
         public void Add(Person s) 
         { FakeDatabase.People.Add(s); }
+
+        public void Remove(Person s) 
+        { FakeDatabase.People.Remove(s  ); }
 
         //returns a reference to students found. If returned list type instead w ToList(), it would be a deep copy 
         public IEnumerable<Student?> Search(string query) 
