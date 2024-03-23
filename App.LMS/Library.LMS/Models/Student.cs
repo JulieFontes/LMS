@@ -14,9 +14,15 @@ namespace Library.LMS.Models
 
         public Student()
         { Grades = new Dictionary<int, double>(); }
+
         public enum StudentClassification
         {
             Freshman, Sophomore, Junior, Senior
+        }
+
+        public override string ToString()
+        {
+            return $"[{Id}] {Name} - {Classification}";
         }
     }
 }

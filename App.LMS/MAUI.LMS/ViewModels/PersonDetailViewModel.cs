@@ -15,6 +15,17 @@ namespace MAUI.LMS.ViewModels
 
         public char ClassificationChar { get; set; }
 
+        public PersonDetailViewModel(string id)
+        {
+            if(id == string.Empty)
+            LoadById(id);    
+        }
+
+        private void LoadById(string id)
+        { 
+            
+        }
+
         public void AddPerson()
         {
             

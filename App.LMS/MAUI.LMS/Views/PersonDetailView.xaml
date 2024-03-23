@@ -12,7 +12,7 @@
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
 
-        <Entry Text="{Binding Path=Name, Mode=TwoWay}"></Entry>
+        <Entry Placeholder="StudentName" Text="{Binding Path=Name, Mode=TwoWay}"></Entry>
         <StackLayout RadioButtonGroup.GroupName="Classifications"
         RadioButtonGroup.SelectedValue="{Binding ClassificationChar}" >
         <RadioButton  Content="Freshman" Value='F'/>
