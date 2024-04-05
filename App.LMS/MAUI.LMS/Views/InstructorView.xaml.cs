@@ -5,14 +5,14 @@ public partial class InstructorView : ContentPage
 {
 	public InstructorView()
 	{
-		InitializeComponent(); 
-		BindingContext = new InstructorViewViewModel();
+        InitializeComponent();
+        BindingContext = new InstructorViewViewModel();
 	}
 
 	private void AddEnrollmentClicked(object sender, EventArgs e) 
 	{
-		(BindingContext as InstructorViewViewModel).AddClick(Shell.Current);
-	}
+        (BindingContext as InstructorViewViewModel).AddEnrollmentClick(Shell.Current);
+    }
 
     private void BackClicked(object sender, EventArgs e)
     {
@@ -26,11 +26,11 @@ public partial class InstructorView : ContentPage
 
     private void EditEnrollmentClicked(object sender, EventArgs e)
     {
-		Shell.Current.GoToAsync("//PersonDetailView");
+		(BindingContext as InstructorViewViewModel).EditEnrollmentClick(Shell.Current);
     }
 
     private void RemoveEnrollmentClicked(object sender, EventArgs e)
     {
-		(BindingContext as InstructorViewViewModel).RemoveClick();
+		(BindingContext as InstructorViewViewModel).RemoveEnrollmentClick();
     }
 }

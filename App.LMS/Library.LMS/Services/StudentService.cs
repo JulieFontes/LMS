@@ -16,9 +16,7 @@ namespace Library.LMS.Services
         }
 
         private StudentService()
-        {
-
-        }
+        {}
 
         public static StudentService Current
         {
@@ -39,5 +37,17 @@ namespace Library.LMS.Services
         public IEnumerable<Student?> Search(string query) 
         { return Students.Where(s => (s != null) && s.Name.ToUpper().Contains(query.ToUpper())); }
 
+        public Person? GetById(string? id)
+        {
+            return FakeDatabase.People.FirstOrDefault(p => p.Id == id);
+        }
+
+        public bool ExistsId(string id)
+        {
+            if (FakeDatabase.People.Exists(s => s.Id == id))
+                return true;
+
+            return false;
+        }
     }
 }

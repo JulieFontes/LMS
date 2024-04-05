@@ -15,12 +15,14 @@ public partial class PersonDetailView : ContentPage
 
     public string PersonId { get; set; }
 
-    private void OnArriving(object sender, EventArgs e)
+    private void OnArriving(object sender, NavigatedToEventArgs e)
     {
-        BindingContext = new PersonDetailViewModel();
+        if (PersonId == "\0")
+            BindingContext = new PersonDetailViewModel();
+        BindingContext = new PersonDetailViewModel(PersonId);
     }
 
-    private void OnLeaving(object sender, EventArgs e) 
+    private void OnLeaving(object sender, NavigatedFromEventArgs e) 
     {
         BindingContext = null;
     }

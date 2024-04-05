@@ -9,7 +9,7 @@
         public Person()
         {
             Name = string.Empty;
-            Id = string.Empty;
+            Id = null;
         }
 
         public override string ToString()

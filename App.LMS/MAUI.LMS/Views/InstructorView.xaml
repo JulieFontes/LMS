@@ -10,9 +10,14 @@
             Text="INTRUCTOR VIEW"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <SearchBar
+            Text="{Binding Query, Mode=TwoWay}"
+            Placeholder="Search for student (to edit/remove)">
+
+        </SearchBar>
         <ListView
             ItemsSource="{Binding People}"
-            SelectedItem="{Binding SelectedPerson, Mode=TwoWay}">
+            SelectedItem="{Binding SelectedPerson}">
             <!--<ListView.ItemTemplate>
                 <DataTemplate
                     <ViewCall>
@@ -21,7 +26,7 @@
                 </DataTemplate>    
             </ListView.ItemTemplate-->
         </ListView>
-        <Button
+        <Button 
             Text="Add Enrollment"
             Clicked="AddEnrollmentClicked"
             />
