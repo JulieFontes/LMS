@@ -37,8 +37,11 @@ namespace Library.LMS.Services
 				|| s.Code.ToUpper().Contains(query.ToUpper())
 				|| s.Description.ToUpper().Contains(query.ToUpper())
             ); 
-		
-		
 		}
+
+        public Course GetById(int id)
+        {
+            return FakeDatabase.Courses.FirstOrDefault(s => s.Id == id);
+        }
     }
 }

@@ -15,10 +15,7 @@ namespace Library.LMS.Services
             get { return FakeDatabase.People.Where(p => p is Student).Select(p => p as Student); }
         }
 
-        private StudentService()
-        {
-
-        }
+        private StudentService(){ }
 
         public static StudentService Current
         {
