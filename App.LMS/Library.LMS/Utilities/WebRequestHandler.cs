@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LMS_Library.Models
+namespace LMS_Library.Utilities
 {
-    internal class FileItem
+    internal class WebRequestHandler
     {
-        public string? Path { get; set; }
+
     }
 }

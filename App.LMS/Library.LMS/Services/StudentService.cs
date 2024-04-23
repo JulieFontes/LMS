@@ -1,12 +1,12 @@
-﻿using Library.LMS.Models;
-using Library.LMS.Database;
+﻿using LMS_Library.Models;
+using LMS_Library.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Library.LMS.Services
+namespace LMS_Library.Services
 {
     public class StudentService
     {
@@ -19,9 +19,11 @@ namespace Library.LMS.Services
 
         public static StudentService Current
         {
-            get { 
-                if(_instance == null)
+            get {
+                if (_instance == null)
+                {
                     _instance = new StudentService();
+                }
                 return _instance;
             }
         }
@@ -35,6 +37,11 @@ namespace Library.LMS.Services
         //returns a reference to students found. If returned list type instead w ToList(), it would be a deep copy 
         public IEnumerable<Student?> Search(string query) 
         { return Students.Where(s => (s != null) && s.Name.ToUpper().Contains(query.ToUpper())); }
+
+        public Person GetById(string id)
+        { 
+            return FakeDatabase.People.FirstOrDefault(p => p.Id == id);
+        }
 
     }
 }

@@ -1,8 +1,10 @@
-﻿using Library.LMS.Models;
-using Library.LMS.Services;
+﻿using LMS_Library.Models;
+using LMS_Library.Services;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,12 +12,37 @@ namespace MAUI.LMS.ViewModels
 {
     internal class CourseDetailViewModel
     {
-        public CourseDetailViewModel()
+        public CourseDetailViewModel(string? code = null)
         {
-            course = new Course();
+            if (code != null)
+            {
+                isUpdating = true;
+                LoadByCode(code);
+            }
+            else
+                isUpdating = false;
+            NotifyPropertyChanged(nameof(PageTitle));
         }
 
+        private List<Student> roster;
+
+        public List<Student> TempRoster     //save students in here as they are added with the + then add to roster when its closing
+        { get => roster; }
+
+        public void AddToRoster()
+        { 
+            foreach(Student s in TempRoster)
+                TempRoster.Add(s); 
+        }
+
+        public void RemoveFromRoster(Student s)
+        { TempRoster.Remove(s); }
+
         private Course course;
+
+        public Student SelectedStudent;
+
+        private bool isUpdating;
 
         public int Id { get; set; }
 
@@ -31,7 +58,7 @@ namespace MAUI.LMS.ViewModels
 
         public string Prefix {
             get => course?.Prefix ?? string.Empty;
-            set { if (course != null) course.Name = value; }
+            set { if (course != null) course.Prefix = value; }
         }
 
         public string CourseCode
@@ -39,25 +66,55 @@ namespace MAUI.LMS.ViewModels
             get => course?.Code ?? string.Empty;
         }
 
-
-        public void AddCourse() 
+        public string PageTitle
         {
-            if (Id <= 0)
+            get
             {
-                CourseService.Current.Add(new Course { Name = Name, Description = Description, Prefix = Prefix });
+                if (isUpdating) return "Update Course";
+
+                return "Add Course";
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private void RefreshCourseView()
+        {
+            NotifyPropertyChanged(nameof(Name));
+            NotifyPropertyChanged(nameof(Id));
+            NotifyPropertyChanged(nameof(Prefix));
+            NotifyPropertyChanged(nameof(Description));
+        }
+        public void AddCourse(string? code) 
+        {
+            if (code == null)
+            {
+                CourseService.Current.AddCourse(new Course { Name = Name, Description = Description, Prefix = Prefix, Roster = TempRoster });
             }
             else {
-                var refToUpdate = CourseService.Current.GetById(Id) as Course;
+                Course refToUpdate = CourseService.Current.GetByCode(CourseCode) ?? new Course();
                 refToUpdate.Name = Name;
                 refToUpdate.Description = Description;
                 refToUpdate.Prefix = Prefix;
+                refToUpdate.Roster = TempRoster;
             }
             Shell.Current.GoToAsync("//Instructor");
         }
 
-        public void AddStudentToCourse() 
-        { 
-            
+
+        private void LoadByCode(string code)
+        {
+            Course course = CourseService.Current.GetByCode(code) ?? new Course();
+            if (course == null)
+                return;
+
+            this.course = course;
+
+            RefreshCourseView();
         }
     }
 }
