@@ -20,6 +20,11 @@ namespace MAUI.LMS
         {
             Shell.Current.GoToAsync("//Student");
         }
+
+        private void ExitClicked(object sender, EventArgs e)
+        {
+            Application.Current.Quit();
+        }
     }
 
 }

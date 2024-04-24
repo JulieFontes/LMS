@@ -1,6 +1,7 @@
 ﻿using Library.LMS.Models;
 using Library.LMS.Services;
 using System.Security.Cryptography.X509Certificates;
+using static Library.LMS.Models.Student;
 
 namespace App.LMS.Helpers 
 {
@@ -24,14 +25,14 @@ namespace App.LMS.Helpers
             string name = Console.ReadLine() ?? string.Empty;
             Console.WriteLine("Enter the student's classification: [Freshman (1), Sophomore (2), Junior (3), Senior (4)]");
             string classification = Console.ReadLine() ?? string.Empty;
-            PersonClassification classEnum = PersonClassification.Freshman;
+            StudentClassification classEnum = StudentClassification.Freshman;
 
             if (classification == "2")
-                classEnum = PersonClassification.Sophomore;
+                classEnum = StudentClassification.Sophomore;
             else if (classification == "3")
-                classEnum = PersonClassification.Junior;
+                classEnum = StudentClassification.Junior;
             else if (classification == "4")
-                classEnum = PersonClassification.Senior;
+                classEnum = StudentClassification.Senior;
 
             bool isCreate = false;
             if (selectedS == null) {

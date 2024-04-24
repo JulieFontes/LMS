@@ -2,40 +2,94 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUI.LMS.Views.InstructorView"
-             Title="InstructorView"
+             Title="Instructor Page"
              NavigatedTo="ContentPage_NavigatedTo"
              >
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Text="Enrollments"
+            Clicked="Toolbar_EnrollmentsClicked"
+            />
+        <ToolbarItem
+            Text="Courses"
+            Clicked="Toolbar_CoursesClicked"
+            />
+    </ContentPage.ToolbarItems>
+
     <VerticalStackLayout>
-        <Label 
-            Text="INTRUCTOR VIEW"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <ListView
-            ItemsSource="{Binding People}"
-            SelectedItem="{Binding SelectedPerson, Mode=TwoWay}">
+        
+        <SearchBar
+            Text="{Binding Query, Mode = TwoWay}"
+            Placeholder="Type Student Name to Search"
+        ></SearchBar>
+        
+        <!--ENROLLEMNTS-->
+        <VerticalStackLayout IsVisible="{Binding IsEnrollmentsVisible}" Padding="30,0" Spacing="25">
+            <Label 
+                Text="University Enrollments"
+                FontSize="Medium"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+            <ListView
+                 ItemsSource="{Binding People}"
+                 SelectedItem="{Binding SelectedPerson, Mode=TwoWay}">
             <!--<ListView.ItemTemplate>
-                <DataTemplate
-                    <ViewCall>
+                     <DataTemplate
+                         <ViewCall>
             
-                    </ViewCall>
-                </DataTemplate>    
-            </ListView.ItemTemplate-->
-        </ListView>
-        <Button
-            Text="Add Enrollment"
-            Clicked="AddEnrollmentClicked"
-            />
-        <Button
-            Text="Edit Enrollment"
-            Clicked="EditEnrollmentClicked"
-            />
-        <Button
-            Text="Remove Enrollment"
-            Clicked="RemoveEnrollmentClicked"
-            />
-        <Button
-            Text="Back"
-            Clicked="BackClicked"
-            />
+                         </ViewCall>
+                     </DataTemplate>    
+                 </ListView.ItemTemplate-->
+            </ListView>
+            <Button
+                Text="Add Enrollment"
+                Clicked="AddEnrollmentClicked"
+                />
+            <Button 
+                Text="Edit Enrollment"
+                Clicked="EditEnrollmentClicked"
+                />  
+            <Button
+                Text="Remove Enrollment"
+                Clicked="RemoveEnrollmentClicked"
+                />
+            <Button
+                Text="Back"
+                Clicked="BackClicked"
+                />  
+        </VerticalStackLayout>
+
+        <!--COURSES-->
+        <VerticalStackLayout IsVisible="{Binding IsCoursesVisible}" Padding="30,0" Spacing="25">
+            <Label
+                Text="University Course List"
+                FontSize="Medium"
+                VerticalOptions="Center"
+                HorizontalOptions="Center" />
+            <ListView
+                ItemsSource="{Binding Courses}"
+                SelectedItem="{Binding SelectedCourse}">
+            </ListView>
+            <Button
+                Text="Add Course"
+                Clicked="AddCourseClicked"
+                />
+            <Button
+                Text="Edit Course"
+                Clicked="EditCourseClicked"
+                />
+            <Button
+                Text="Remove Course"
+                Clicked="RemoveCourseClicked"
+                />
+            <Button
+                Text="Back"
+                Clicked="BackClicked"
+                />
+
+        </VerticalStackLayout>
+
+
     </VerticalStackLayout>
 </ContentPage>
