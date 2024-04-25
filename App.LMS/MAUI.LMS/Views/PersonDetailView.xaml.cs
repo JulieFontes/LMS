@@ -1,6 +1,6 @@
 using MAUI.LMS.ViewModels;
-using Library.LMS.Services;
-using Library.LMS.Models;
+using LMS_Library.Services;
+using LMS_Library.Models;
 
 namespace MAUI.LMS.Views;
 
@@ -13,6 +13,8 @@ public partial class PersonDetailView : ContentPage
 		InitializeComponent();
 	}
     public string? PersonId { get; set; }
+
+    public string? PersonId {  get; set; }
 
     private void OnArriving(object sender, EventArgs e)
     {

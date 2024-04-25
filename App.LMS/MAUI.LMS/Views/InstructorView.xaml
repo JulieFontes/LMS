@@ -18,23 +18,26 @@
     </ContentPage.ToolbarItems>
 
     <VerticalStackLayout>
+        
         <SearchBar
             Text="{Binding Query, Mode = TwoWay}"
+            Placeholder="Type Student Name to Search"
         ></SearchBar>
         
         <!--ENROLLEMNTS-->
         <VerticalStackLayout IsVisible="{Binding IsEnrollmentsVisible}" Padding="30,0" Spacing="25">
             <Label 
                 Text="University Enrollments"
+                FontSize="Medium"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
             <ListView
                  ItemsSource="{Binding People}"
                  SelectedItem="{Binding SelectedPerson, Mode=TwoWay}">
-                            <!--<ListView.ItemTemplate>
+            <!--<ListView.ItemTemplate>
                      <DataTemplate
                          <ViewCall>
-     
+            
                          </ViewCall>
                      </DataTemplate>    
                  </ListView.ItemTemplate-->
@@ -43,7 +46,7 @@
                 Text="Add Enrollment"
                 Clicked="AddEnrollmentClicked"
                 />
-            <Button
+            <Button 
                 Text="Edit Enrollment"
                 Clicked="EditEnrollmentClicked"
                 />  
@@ -61,6 +64,7 @@
         <VerticalStackLayout IsVisible="{Binding IsCoursesVisible}" Padding="30,0" Spacing="25">
             <Label
                 Text="University Course List"
+                FontSize="Medium"
                 VerticalOptions="Center"
                 HorizontalOptions="Center" />
             <ListView

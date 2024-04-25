@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
+using LMS_Library.Services;
 
-namespace Library.LMS.Models
+namespace LMS_Library.Models
 {
     public class Student : Person
     {
@@ -15,13 +17,18 @@ namespace Library.LMS.Models
 
         public Student()
         { Grades = new Dictionary<int, double>(); }
-
+        
         public Student(string _name, StudentClassification cl)
-        {
+        { 
             Grades = new Dictionary<int, double>();
             Classification = cl;
             Name = _name;
             Id = newId(_name);
+        }
+
+        public enum StudentClassification
+        {
+            Freshman, Sophomore, Junior, Senior
         }
 
         public override string ToString()
@@ -29,10 +36,6 @@ namespace Library.LMS.Models
             return $"[{Id}] {Name} - {Classification}";
         }
 
-        public enum StudentClassification
-        {
-            Freshman, Sophomore, Junior, Senior
-        }
         private string newId(string _name)
         {
             _name = _name.ToLower();

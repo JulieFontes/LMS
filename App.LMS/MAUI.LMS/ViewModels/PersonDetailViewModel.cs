@@ -100,7 +100,7 @@ namespace MAUI.LMS.ViewModels
         private StudentClassification CharToClass(char c)
         {
             StudentClassification sc;
-            switch (c)
+            switch(c)
             {
                 case 'S':
                     sc = StudentClassification.Senior;
