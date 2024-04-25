@@ -11,7 +11,7 @@ public partial class InstructorView : ContentPage
 
 	private void AddEnrollmentClicked(object sender, EventArgs e) 
 	{
-		(BindingContext as InstructorViewViewModel).AddEnrollmentClick(Shell.Current);
+		(BindingContext as InstructorViewViewModel)?.AddEnrollmentClick(Shell.Current);
 	}
 
     private void BackClicked(object sender, EventArgs e)
@@ -21,22 +21,22 @@ public partial class InstructorView : ContentPage
 
 	private void ContentPage_NavigatedTo(object sender, NavigatedToEventArgs e)
 	{
-		(BindingContext as InstructorViewViewModel).RefreshView();
+		(BindingContext as InstructorViewViewModel)?.RefreshView();
 	}
 
     private void EditEnrollmentClicked(object sender, EventArgs e)
     {
-		(BindingContext as InstructorViewViewModel).AddEnrollmentClick(Shell.Current);
+		(BindingContext as InstructorViewViewModel)?.EditEnrollmentClick(Shell.Current);
     }
 
     private void RemoveEnrollmentClicked(object sender, EventArgs e)
     {
-		(BindingContext as InstructorViewViewModel).RemoveEnrollmentClick();
+		(BindingContext as InstructorViewViewModel)?.RemoveEnrollmentClick();
     }
 
 	private void AddCourseClicked(object sender, EventArgs e)
 	{
-		(BindingContext as InstructorViewViewModel).AddCourseClick(Shell.Current);
+		(BindingContext as InstructorViewViewModel)?.AddCourseClick(Shell.Current);
 
     }
 
@@ -48,16 +48,16 @@ public partial class InstructorView : ContentPage
 
     private void RemoveCourseClicked(object sender, EventArgs e)
     {
-        (BindingContext as InstructorViewViewModel).RemoveCourseClick();
+        (BindingContext as InstructorViewViewModel)?.RemoveCourseClick();
     }
 
     private void Toolbar_CoursesClicked(object sender, EventArgs e)
     {
-		(BindingContext as InstructorViewViewModel).ShowCourses();
+		(BindingContext as InstructorViewViewModel)?.ShowCourses();
     }
 
 	private void Toolbar_EnrollmentsClicked(object sender, EventArgs e)
 	{
-        (BindingContext as InstructorViewViewModel).ShowEnrollments();
+        (BindingContext as InstructorViewViewModel)?.ShowEnrollments();
     }
 }

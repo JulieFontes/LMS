@@ -4,18 +4,21 @@ using Library.LMS.Models;
 
 namespace MAUI.LMS.Views;
 
+[QueryProperty(nameof(PersonId), "personId")]
+
 public partial class PersonDetailView : ContentPage
 {
 	public PersonDetailView()
 	{
 		InitializeComponent();
 	}
+    public string? PersonId { get; set; }
 
     private void OnArriving(object sender, EventArgs e)
     {
-        BindingContext = new PersonDetailViewModel();
+        BindingContext = new PersonDetailViewModel(PersonId);
     }
-
+    
     private void OnLeaving(object sender, EventArgs e) 
     {
         BindingContext = null;

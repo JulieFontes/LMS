@@ -23,6 +23,11 @@
                 Text="INSTRUCTOR"
                 SemanticProperties.Hint="Sends you to Instructor View"
                 Clicked="InstructorClicked" />
+            <Button
+                Text="EXIT"
+                SemanticProperties.Hint="Quits Program"
+                Clicked="ExitClicked"
+                />
         </VerticalStackLayout>
     </ScrollView>
 

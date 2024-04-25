@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUI.LMS.Views.CourseDetailView"
              Title="CourseDetailView">
-    <VerticalStackLayout>
+    <VerticalStackLayout Spacing="15">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -34,7 +34,8 @@
             Grid.Column="1"
         ></Label>
         <Entry
-            Text="{Binding Path=Name, Mode=TwoWay}"  
+            Text="{Binding Path=Name, Mode=TwoWay}"
+            Placeholder="Course Name"
             Grid.Row="1"
             Grid.Column="1" 
         ></Entry>

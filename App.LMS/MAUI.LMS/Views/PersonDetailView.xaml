@@ -6,13 +6,13 @@
              NavigatedFrom="OnLeaving"
              NavigatedTo="OnArriving"
              >
-    <VerticalStackLayout>
+    <VerticalStackLayout Padding="30,0" Spacing="25">
         <Label 
-            Text="Student Enrollment"
+            Text="{Binding PageTitle}"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
 
-        <Entry Text="{Binding Path=Name, Mode=TwoWay}"></Entry>
+        <Entry Text="{Binding Path=Name, Mode=TwoWay}" Placeholder="Student Name"></Entry>
         <StackLayout RadioButtonGroup.GroupName="Classifications"
         RadioButtonGroup.SelectedValue="{Binding ClassificationChar}" >
         <RadioButton  Content="Freshman" Value='F'/>
@@ -25,7 +25,7 @@
             Text="OK" 
             Clicked="OkClicked"/>
         <Button 
-            Text="Cancal" 
+            Text="Cancel" 
             Clicked="BackClicked"/>
 
     </VerticalStackLayout>

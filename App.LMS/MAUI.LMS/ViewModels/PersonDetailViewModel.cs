@@ -1,41 +1,121 @@
-﻿using Library.LMS.Models;
-using Library.LMS.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using Library.LMS.Models;
+using Library.LMS.Services;
 using static Library.LMS.Models.Student;
 
 namespace MAUI.LMS.ViewModels
 {
     public class PersonDetailViewModel
     {
-        public string? Name { get; set; }
+        public string PageTitle
+        {
+            get
+            { 
+                if (isUpdating) return "Update Student";
+
+                return "Add Student";
+            }
+        }
+
+        public string Name { get; set; }
 
         public char ClassificationChar { get; set; }
 
+        public string? Id { get; set; }
+
+        private bool isUpdating;
+
+        public PersonDetailViewModel(string? id = null)
+        {
+            if (id != null)
+            {
+                isUpdating = true;
+                LoadById(id);
+            }
+            else
+                isUpdating = false;
+            NotifyPropertyChanged(nameof(PageTitle));
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private void LoadById(string id)
+        {
+            Student? person = StudentService.Current.GetById(id);
+            if (person == null)
+                return;
+
+            Name = person.Name;
+            Id = person.Id;
+            ClassificationChar = ClassToChar(person.Classification);
+
+            NotifyPropertyChanged(nameof(Name));
+            NotifyPropertyChanged(nameof(ClassificationChar));
+        }
+
         public void AddPerson()
         {
-            
-            Student.StudentClassification classification = Student.StudentClassification.Freshman;
-            switch (ClassificationChar)
+            if (Id == null)
+                StudentService.Current.Add(new Student(Name, CharToClass(ClassificationChar)));
+            else
             {
-                case 'F':
-                    classification = Student.StudentClassification.Freshman;
+                Student refToUpdate = StudentService.Current.GetById(Id) as Student;
+                refToUpdate.Name = Name;
+                refToUpdate.Classification = CharToClass(ClassificationChar);
+            }
+
+            Shell.Current.GoToAsync("//Instructor");
+        }
+
+        private char ClassToChar(StudentClassification pc)
+        {
+            switch (pc)
+            {
+                case StudentClassification.Senior:
+                    ClassificationChar = 'S';
                     break;
-                case 'O':
-                    classification = StudentClassification.Sophomore;
+                case StudentClassification.Junior:
+                    ClassificationChar = 'J';
                     break;
-                case 'J':
-                    classification = StudentClassification.Junior;
+                case StudentClassification.Sophomore:
+                    ClassificationChar = 'O';
                     break;
-                case 'S':
-                    classification = StudentClassification.Senior;
+                default:
+                    ClassificationChar = 'F';
                     break;
             }
-            StudentService.Current.Add(new Student { Name = Name, Classification = classification });
-            Shell.Current.GoToAsync("//Instructor");
+            return ClassificationChar;
+        }
+
+        private StudentClassification CharToClass(char c)
+        {
+            StudentClassification sc;
+            switch (c)
+            {
+                case 'S':
+                    sc = StudentClassification.Senior;
+                    break;
+                case 'J':
+                    sc = StudentClassification.Junior;
+                    break;
+                case 'O':
+                    sc = StudentClassification.Sophomore;
+                    break;
+                default:
+                    sc = StudentClassification.Freshman;
+                    break;
+            }
+            return sc;
         }
     }
 }
