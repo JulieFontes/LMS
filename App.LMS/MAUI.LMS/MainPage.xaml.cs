@@ -23,7 +23,7 @@ namespace MAUI.LMS
 
         private void ExitClicked(object sender, EventArgs e)
         {
-            Application.Current.Quit();
+            Application.Current?.Quit();
         }
     }
 

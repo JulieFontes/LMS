@@ -24,12 +24,12 @@ public partial class CourseDetailView : ContentPage
 
     private void PlusClicked(object sender, EventArgs e)
     {
-        (BindingContext as CourseDetailViewModel).AddToRoster();
+        (BindingContext as CourseDetailViewModel)?.AddStudentToCourse();
     }
 
     private void DoneClicked(object sender, EventArgs e) 
 	{
-        (BindingContext as CourseDetailViewModel).AddCourse(CourseCode);
+        (BindingContext as CourseDetailViewModel)?.AddCourse();
     }
 
 	private void BackClicked(object sender, EventArgs e) 

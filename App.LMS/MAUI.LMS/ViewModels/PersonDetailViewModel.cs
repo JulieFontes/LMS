@@ -1,13 +1,13 @@
-﻿using LMS_Library.Models;
-using static LMS_Library.Models.Student;
-using LMS_Library.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Library.LMS.Models;
+using Library.LMS.Services;
+using static Library.LMS.Models.Student;
 
 namespace MAUI.LMS.ViewModels
 {
@@ -16,7 +16,7 @@ namespace MAUI.LMS.ViewModels
         public string PageTitle
         {
             get
-            {
+            { 
                 if (isUpdating) return "Update Student";
 
                 return "Add Student";
@@ -51,7 +51,7 @@ namespace MAUI.LMS.ViewModels
 
         private void LoadById(string id)
         {
-            Student? person = StudentService.Current.GetById(id) as Student;
+            Student? person = StudentService.Current.GetById(id);
             if (person == null)
                 return;
 
@@ -66,8 +66,9 @@ namespace MAUI.LMS.ViewModels
         public void AddPerson()
         {
             if (Id == null)
-                StudentService.Current.Add(new Student(Name,CharToClass(ClassificationChar)));
-            else {
+                StudentService.Current.Add(new Student(Name, CharToClass(ClassificationChar)));
+            else
+            {
                 Student refToUpdate = StudentService.Current.GetById(Id) as Student;
                 refToUpdate.Name = Name;
                 refToUpdate.Classification = CharToClass(ClassificationChar);
@@ -91,7 +92,7 @@ namespace MAUI.LMS.ViewModels
                     break;
                 default:
                     ClassificationChar = 'F';
-                    break;            
+                    break;
             }
             return ClassificationChar;
         }
@@ -108,7 +109,7 @@ namespace MAUI.LMS.ViewModels
                     sc = StudentClassification.Junior;
                     break;
                 case 'O':
-                    sc = StudentClassification.Sophomore; 
+                    sc = StudentClassification.Sophomore;
                     break;
                 default:
                     sc = StudentClassification.Freshman;

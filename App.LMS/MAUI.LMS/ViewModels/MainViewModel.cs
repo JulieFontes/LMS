@@ -8,6 +8,6 @@ namespace MAUI.LMS.ViewModels
 {
     internal class MainViewModel
     {
-       
+      
     }
 }

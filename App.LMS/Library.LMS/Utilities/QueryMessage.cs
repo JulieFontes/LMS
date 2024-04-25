@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LMS_Library.Utilities
+namespace Library.LMS.Utilities
 {
     public class QueryMessage
     {

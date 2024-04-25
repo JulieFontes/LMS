@@ -4,20 +4,21 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using LMS_Library.Models;
-using LMS_Library.Services;
 using System.Collections.ObjectModel;
 using System.Runtime.CompilerServices;
+using Library.LMS.Models;
+using Library.LMS.Services;
 
 namespace MAUI.LMS.ViewModels
 {
     public class InstructorViewViewModel : INotifyPropertyChanged
     {
         public InstructorViewViewModel()
-        {  
+        {
             //default open page for InstructorView
             IsEnrollmentsVisible = true;
             IsCoursesVisible = false;
+            query = string.Empty;
         }
 
         public Person? SelectedPerson { get; set; }
@@ -39,14 +40,15 @@ namespace MAUI.LMS.ViewModels
 
         public ObservableCollection<Course> Courses
         {
-            get {
+            get
+            {
                 if (Query == null || Query == string.Empty)
                 { return new ObservableCollection<Course>(); }
- 
+
                 var filteredList = CourseService.Current.Courses
                     .Where(
                     c => c.Name.ToUpper().Contains(Query?.ToUpper() ?? string.Empty));
-                return new ObservableCollection<Course>(filteredList); 
+                return new ObservableCollection<Course>(filteredList);
             }
         }
 
@@ -58,7 +60,8 @@ namespace MAUI.LMS.ViewModels
         public string Query
         {
             get => query;
-            set {
+            set
+            {
                 query = value;
                 NotifyPropertyChanged(nameof(People));
                 NotifyPropertyChanged(nameof(Courses));
@@ -73,7 +76,7 @@ namespace MAUI.LMS.ViewModels
             NotifyPropertyChanged("IsCoursesVisible");
         }
 
-        public void ShowCourses() 
+        public void ShowCourses()
         {
             IsCoursesVisible = true;
             IsEnrollmentsVisible = false;
@@ -96,7 +99,7 @@ namespace MAUI.LMS.ViewModels
 
         public void AddEnrollmentClick(Shell s)
         {
-            s.GoToAsync("//PersonDetail"); 
+            s.GoToAsync("//PersonDetail");
         }
 
         public void EditEnrollmentClick(Shell s)
@@ -107,7 +110,7 @@ namespace MAUI.LMS.ViewModels
             s.GoToAsync($"//PersonDetail?personId={SelectedPerson.Id}");
         }
 
-        public void RemoveEnrollmentClick() 
+        public void RemoveEnrollmentClick()
         {
             if (SelectedPerson == null)
                 return;
@@ -130,8 +133,8 @@ namespace MAUI.LMS.ViewModels
         }
 
         public void RemoveCourseClick()
-        { 
-            
+        {
+
         }
     }
 }
