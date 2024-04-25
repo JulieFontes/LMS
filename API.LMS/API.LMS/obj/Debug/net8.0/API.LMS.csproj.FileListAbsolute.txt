@@ -1,0 +1,8 @@
+C:\Users\jmfon\source\repos\Canvas\API.LMS\API.LMS\obj\Debug\net8.0\API.LMS.csproj.AssemblyReference.cache
+C:\Users\jmfon\source\repos\Canvas\API.LMS\API.LMS\obj\Debug\net8.0\API.LMS.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jmfon\source\repos\Canvas\API.LMS\API.LMS\obj\Debug\net8.0\API.LMS.AssemblyInfoInputs.cache
+C:\Users\jmfon\source\repos\Canvas\API.LMS\API.LMS\obj\Debug\net8.0\API.LMS.AssemblyInfo.cs
+C:\Users\jmfon\source\repos\Canvas\API.LMS\API.LMS\obj\Debug\net8.0\API.LMS.csproj.CoreCompileInputs.cache
+C:\Users\jmfon\source\repos\Canvas\API.LMS\API.LMS\obj\Debug\net8.0\API.LMS.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\jmfon\source\repos\Canvas\API.LMS\API.LMS\obj\Debug\net8.0\API.LMS.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\jmfon\source\repos\Canvas\API.LMS\API.LMS\obj\Debug\net8.0\API.LMS.sourcelink.json
