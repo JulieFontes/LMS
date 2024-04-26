@@ -1,5 +1,4 @@
-﻿using Library.LMS.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +16,6 @@ namespace LMS_Library.Models
 
         public Student()
         { Grades = new Dictionary<int, double>(); }
-        
         public Student(string _name, StudentClassification cl)
         { 
             Grades = new Dictionary<int, double>();
@@ -25,12 +23,10 @@ namespace LMS_Library.Models
             Name = _name;
             Id = newId(_name);
         }
-
         public enum StudentClassification
         {
             Freshman, Sophomore, Junior, Senior
         }
-
         public override string ToString()
         {
             return $"[{Id}] {Name} - {Classification}";
@@ -46,8 +42,7 @@ namespace LMS_Library.Models
 
             for (int i = 1; i < _name.Length; ++i)
             {
-                if (_name[i] == ' ')
-                {
+                if (_name[i] == ' ') {
                     id += _name[++i];
                 }
             }
@@ -62,8 +57,7 @@ namespace LMS_Library.Models
 
         private string lastValidId(string id)
         {
-            foreach (Student s in StudentService.Current.Students)
-            {
+            foreach (Student s in StudentService.Current.Students) {
                 if (s.Id == id)
                 {
                     id += 'a';

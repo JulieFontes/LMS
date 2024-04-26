@@ -20,32 +20,6 @@
                 </RowDefinition>
             </Grid.RowDefinitions>
         
-        <Label 
-            Text="Prefix"
-            VerticalOptions="Center" 
-            HorizontalOptions="Start" 
-            Grid.Row="0"
-            Grid.Column="0"
-            />
-        <Entry
-            Text="{Binding Path=Prefix, Mode=TwoWay}"  
-            Grid.Row="1"
-            Grid.Column="0" 
-        ></Entry>
-        <Label
-            Text="Name"
-            VerticalOptions="Center"
-            HorizontalOptions="Start"
-            Grid.Row="0"
-            Grid.Column="1"
-        ></Label>
-        <Entry
-            Text="{Binding Path=Name, Mode=TwoWay}"
-            Placeholder="Course Name"
-            Grid.Row="1"
-            Grid.Column="1" 
-        ></Entry>
-
             <Label  
                 Text="Prefix"
                 VerticalOptions="Center" 
@@ -70,7 +44,6 @@
                 Grid.Row="1"
                 Grid.Column="1" 
             ></Entry>
-          
         </Grid>
 
         <Label 

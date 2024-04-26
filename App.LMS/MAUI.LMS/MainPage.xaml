@@ -25,7 +25,6 @@
                 Clicked="InstructorClicked" />
             <Button
                 Text="EXIT"
-                SemanticProperties.Hint="Quits Program"
                 Clicked="ExitClicked"
                 />
         </VerticalStackLayout>

@@ -12,7 +12,6 @@ public partial class PersonDetailView : ContentPage
 	{
 		InitializeComponent();
 	}
-    public string? PersonId { get; set; }
 
     public string? PersonId {  get; set; }
 
@@ -20,7 +19,7 @@ public partial class PersonDetailView : ContentPage
     {
         BindingContext = new PersonDetailViewModel(PersonId);
     }
-    
+
     private void OnLeaving(object sender, EventArgs e) 
     {
         BindingContext = null;
