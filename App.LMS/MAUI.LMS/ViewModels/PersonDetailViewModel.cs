@@ -69,7 +69,7 @@ namespace MAUI.LMS.ViewModels
                 StudentService.Current.Add(new Student(Name, CharToClass(ClassificationChar)));
             else
             {
-                Student refToUpdate = StudentService.Current.GetById(Id) as Student;
+                Student refToUpdate = StudentService.Current.GetById(Id) as Student ?? new Student();
                 refToUpdate.Name = Name;
                 refToUpdate.Classification = CharToClass(ClassificationChar);
             }

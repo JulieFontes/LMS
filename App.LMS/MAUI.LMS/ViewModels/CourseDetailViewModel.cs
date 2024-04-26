@@ -20,7 +20,10 @@ namespace MAUI.LMS.ViewModels
                 LoadByCode(code);
             }
             else
+            {
                 isUpdating = false;
+                roster = new List<Student>();
+            }
             NotifyPropertyChanged(nameof(PageTitle));
         }
 
