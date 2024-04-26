@@ -1,5 +1,5 @@
-﻿using LMS_Library.Models;
-using LMS_Library.Services;
+﻿using Library.LMS.Models;
+using Library.LMS.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

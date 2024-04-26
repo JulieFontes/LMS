@@ -51,7 +51,7 @@ namespace MAUI.LMS.ViewModels
 
         private void LoadById(string id)
         {
-            Student? person = StudentService.Current.GetById(id);
+            Student? person = StudentService.Current.GetById(id) as Student;
             if (person == null)
                 return;
 

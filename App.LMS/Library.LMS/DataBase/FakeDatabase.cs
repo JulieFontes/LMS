@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using LMS_Library.Models;
-using LMS_Library.Services;
+using Library.LMS.Models;
 
-namespace LMS_Library.Database
+namespace Library.LMS.Database
 {
     internal class FakeDatabase
     {

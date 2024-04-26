@@ -5,9 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-using LMS_Library.Services;
 
-namespace LMS_Library.Models
+namespace Library.LMS.Models
 {
     public class Student : Person
     {

@@ -1,4 +1,4 @@
-﻿namespace LMS_Library.Models
+﻿namespace Library.LMS.Models
 {
     public class Person
     {

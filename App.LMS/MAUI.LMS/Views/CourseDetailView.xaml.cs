@@ -1,4 +1,5 @@
 using MAUI.LMS.ViewModels;
+using Library.LMS.Services;
 namespace MAUI.LMS.Views;
 
 [QueryProperty(nameof(CourseCode), "courseCode")]
@@ -24,12 +25,12 @@ public partial class CourseDetailView : ContentPage
 
     private void PlusClicked(object sender, EventArgs e)
     {
-        (BindingContext as CourseDetailViewModel)?.AddStudentToCourse();
+      //  (BindingContext as CourseDetailViewModel)?.AddStudentToCourse();
     }
 
     private void DoneClicked(object sender, EventArgs e) 
 	{
-        (BindingContext as CourseDetailViewModel)?.AddCourse();
+        (BindingContext as CourseDetailViewModel)?.AddCourse(CourseCode);
     }
 
 	private void BackClicked(object sender, EventArgs e) 

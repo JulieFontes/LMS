@@ -27,6 +27,8 @@
                 Text="EXIT"
                 SemanticProperties.Hint="Quits Program"
                 Clicked="ExitClicked"
+                BackgroundColor="DeepSkyBlue"
+                Hov
                 />
         </VerticalStackLayout>
     </ScrollView>

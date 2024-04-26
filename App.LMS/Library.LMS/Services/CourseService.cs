@@ -1,8 +1,8 @@
 ﻿using System;
-using LMS_Library.Models;
-using LMS_Library.Database;
+using Library.LMS.Models;
+using Library.LMS.Database;
 
-namespace LMS_Library.Services
+namespace Library.LMS.Services
 {
     public class CourseService
     {

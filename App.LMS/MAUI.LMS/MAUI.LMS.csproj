@@ -67,7 +67,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Library.LMS\LMS_Library.csproj" />
+	  <ProjectReference Include="..\Library.LMS\Library.LMS.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
