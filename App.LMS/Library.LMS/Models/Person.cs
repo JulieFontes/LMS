@@ -4,12 +4,12 @@
     {
         public string Name { get; set; }
 
-        public string Id { get; set; }
+        public string? Id { get; set; }
 
         public Person()
         {
             Name = string.Empty;
-            Id = string.Empty;
+            Id = null;
         }
 
         public override string ToString()

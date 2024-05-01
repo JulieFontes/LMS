@@ -51,7 +51,7 @@ namespace MAUI.LMS.ViewModels
 
         private void LoadById(string id)
         {
-            Student? person = StudentService.Current.GetById(id) as Student;
+            Student? person = StudentService.Current.GetById(id);
             if (person == null)
                 return;
 
@@ -66,12 +66,13 @@ namespace MAUI.LMS.ViewModels
         public void AddPerson()
         {
             if (Id == null)
-                StudentService.Current.Add(new Student(Name, CharToClass(ClassificationChar)));
+                StudentService.Current.Add(new Student { Name = Name, Classification = CharToClass(ClassificationChar) });
             else
             {
-                Student refToUpdate = StudentService.Current.GetById(Id) as Student ?? new Student();
+                Student refToUpdate = StudentService.Current.GetById(Id) ?? new Student();
                 refToUpdate.Name = Name;
                 refToUpdate.Classification = CharToClass(ClassificationChar);
+                StudentService.Current.Add(refToUpdate);
             }
 
             Shell.Current.GoToAsync("//Instructor");

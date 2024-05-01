@@ -10,15 +10,18 @@ namespace Library.LMS.Utilities
     public class WebRequestHandler
     {
         private string host = "localhost";
-        private string port = "5242";
+        private string port = "7244";
+
         private HttpClient Client { get; }
+
         public WebRequestHandler()
         {
             Client = new HttpClient();
         }
+
         public async Task<string> Get(string url)
         {
-            var fullUrl = $"http://{host}:{port}{url}";
+            var fullUrl = $"https://{host}:{port}{url}";
             try
             {
                 using (var client = new HttpClient())
@@ -29,18 +32,14 @@ namespace Library.LMS.Utilities
                     return response;
                 }
             }
-            catch (Exception e)
-            {
-
-            }
-
+            catch (Exception e) {}
 
             return null;
         }
 
         public async Task<string> Delete(string url)
         {
-            var fullUrl = $"http://{host}:{port}{url}";
+            var fullUrl = $"https://{host}:{port}{url}";
             try
             {
                 using (var client = new HttpClient())
@@ -71,7 +70,7 @@ namespace Library.LMS.Utilities
 
         public async Task<string> Post(string url, object obj)
         {
-            var fullUrl = $"http://{host}:{port}{url}";
+            var fullUrl = $"https://{host}:{port}{url}";
             using (var client = new HttpClient())
             {
                 using (var request = new HttpRequestMessage(HttpMethod.Post, fullUrl))

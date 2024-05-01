@@ -18,23 +18,20 @@ namespace MAUI.LMS.ViewModels
             //default open page for InstructorView
             IsEnrollmentsVisible = true;
             IsCoursesVisible = false;
-            query = string.Empty;
         }
 
         public Person? SelectedPerson { get; set; }
 
         public Course? SelectedCourse { get; set; }
-        public ObservableCollection<Student?> People
+        public ObservableCollection<Student> EnrolledStudents
         {
             get
             {
-                if (Query == null || Query == string.Empty)
-                { return new ObservableCollection<Student?>(StudentService.Current.Students); }
-
                 var filteredList = StudentService.Current.Students
                     .Where(
                     s => s.Name.ToUpper().Contains(Query?.ToUpper() ?? string.Empty));
-                return new ObservableCollection<Student?>(filteredList);
+
+                return new ObservableCollection<Student>(filteredList);
             }
         }
 
@@ -42,9 +39,6 @@ namespace MAUI.LMS.ViewModels
         {
             get
             {
-                if (Query == null || Query == string.Empty)
-                { return new ObservableCollection<Course>(); }
-
                 var filteredList = CourseService.Current.Courses
                     .Where(
                     c => c.Name.ToUpper().Contains(Query?.ToUpper() ?? string.Empty));
@@ -55,15 +49,15 @@ namespace MAUI.LMS.ViewModels
         public bool IsEnrollmentsVisible { get; set; }
         public bool IsCoursesVisible { get; set; }
 
-        private string query;
+        private string? query;
 
         public string Query
         {
-            get => query;
+            get => query ?? "";
             set
             {
                 query = value;
-                NotifyPropertyChanged(nameof(People));
+                NotifyPropertyChanged(nameof(EnrolledStudents));
                 NotifyPropertyChanged(nameof(Courses));
             }
         }
@@ -93,7 +87,7 @@ namespace MAUI.LMS.ViewModels
 
         public void RefreshView()
         {
-            NotifyPropertyChanged(nameof(People));
+            NotifyPropertyChanged(nameof(EnrolledStudents));
             NotifyPropertyChanged(nameof(Courses));
         }
 
@@ -116,7 +110,7 @@ namespace MAUI.LMS.ViewModels
                 return;
 
             StudentService.Current.Remove(SelectedPerson);
-            RefreshView();
+            NotifyPropertyChanged(nameof(EnrolledStudents));
         }
 
         public void AddCourseClick(Shell s)
@@ -134,7 +128,11 @@ namespace MAUI.LMS.ViewModels
 
         public void RemoveCourseClick()
         {
+            if (SelectedCourse == null)
+                return;
 
+            CourseService.Current.RemoveCourse(SelectedCourse);
+            NotifyPropertyChanged(nameof(Courses));
         }
     }
 }

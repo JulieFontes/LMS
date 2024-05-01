@@ -42,7 +42,7 @@ public partial class InstructorView : ContentPage
 
     private void EditCourseClicked(object sender, EventArgs e)
     {
-		(BindingContext as InstructorViewViewModel).EditCourseClick(Shell.Current);
+		(BindingContext as InstructorViewViewModel)?.EditCourseClick(Shell.Current);
     }
 
     private void RemoveCourseClicked(object sender, EventArgs e)

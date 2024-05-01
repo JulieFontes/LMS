@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUI.LMS.Views.PersonDetailView"
              Title="Student In Question"
+             Shell.BackgroundColor="MidnightBlue" 
+             Shell.TitleColor="White"
              NavigatedFrom="OnLeaving"
              NavigatedTo="OnArriving"
              >
@@ -27,7 +29,8 @@
             Clicked="OkClicked"/>
         <Button 
             Text="Cancel" 
-            Clicked="BackClicked"/>
+            Clicked="BackClicked"
+            BackgroundColor="DeepSkyBlue"/>
 
     </VerticalStackLayout>
 </ContentPage>

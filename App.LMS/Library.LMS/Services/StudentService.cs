@@ -1,21 +1,28 @@
-﻿using Library.LMS.Database;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Library.LMS.Models;
+using Library.LMS.Utilities;
+using Newtonsoft.Json;
 
 namespace Library.LMS.Services
 {
     public class StudentService
     {
         private static StudentService? _instance;
-        public IEnumerable<Student?> Students {
-            get { return FakeDatabase.People.Where(p => p is Student).Select(p => p as Student); }
+        public List<Student> Students 
+        {
+            get 
+            {
+                string? response = new WebRequestHandler().Get("/Student").Result;
+                //if (response == null)
+                //    return new List<Student>();
+                List<Student> students = JsonConvert.DeserializeObject<List<Student>>(response) ?? new List<Student>();
+                return students;
+            }
         }
-
-        private StudentService(){ }
 
         public static StudentService Current
         {
@@ -28,19 +35,25 @@ namespace Library.LMS.Services
             }
         }
 
-        public void Add(Person s) 
-        { FakeDatabase.People.Add(s); }
-
-        public void Remove(Person s) 
-        { FakeDatabase.People.Remove(s  ); }
+        public void Add(Person target) 
+        {
+            var handler = new WebRequestHandler().Post("/Student/AddOrUpdate", target);
+        }
+        
+        public void Remove(Person target) 
+        {
+            var handler = new WebRequestHandler().Delete($"/Student/Delete/{target.Id}"); 
+        }
 
         //returns a reference to students found. If returned list type instead w ToList(), it would be a deep copy 
         public IEnumerable<Student?> Search(string query) 
         { return Students.Where(s => (s != null) && s.Name.ToUpper().Contains(query.ToUpper())); }
 
-        public Person GetById(string id)
-        { 
-            return FakeDatabase.People.FirstOrDefault(p => p.Id == id);
+        public Student? GetById(string id)
+        {
+            string response = new WebRequestHandler().Get($"/Student/Student/{id}").Result;
+            Student? student = JsonConvert.DeserializeObject<Student?>(response);
+            return student;
         }
 
     }

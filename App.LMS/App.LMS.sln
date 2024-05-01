@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.LMS", "App.LMS\App.LMS.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.LMS", "Library.LMS\Library.LMS.csproj", "{8FDD63C5-9825-487C-A53F-AC3C4E2967A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAUI.LMS", "MAUI.LMS\MAUI.LMS.csproj", "{5BA39A22-EBEF-4813-A71E-DC5C096BD501}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MAUI.LMS", "MAUI.LMS\MAUI.LMS.csproj", "{5BA39A22-EBEF-4813-A71E-DC5C096BD501}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,7 +16,6 @@ Global
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{6CAFCAE0-783F-4AA8-B517-59C3548FE385}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6CAFCAE0-783F-4AA8-B517-59C3548FE385}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6CAFCAE0-783F-4AA8-B517-59C3548FE385}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6CAFCAE0-783F-4AA8-B517-59C3548FE385}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8FDD63C5-9825-487C-A53F-AC3C4E2967A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU

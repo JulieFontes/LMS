@@ -12,7 +12,7 @@ namespace Library.LMS.Models
         public int Id { get; set; }
         public string Prefix { get; set; }
         public string Code { 
-            get { return $"{Prefix} {Id}"; } 
+            get { return $"{Prefix}{Id}"; } 
         }
 
         public string Name { get; set; }

@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUI.LMS.Views.StudentView"
-             Title="Student Page">
+             Title="Student Page"
+             Shell.BackgroundColor="MidnightBlue" 
+             Shell.TitleColor="White">
     <VerticalStackLayout Padding="30,0" Spacing="25">
         <Label 
             Text="STUDENT VIEW"
@@ -11,6 +13,7 @@
         <Button
             Text="Back"
             Clicked="BackClicked"
+            BackgroundColor="DeepSkyBlue"
             />
     </VerticalStackLayout>
 </ContentPage>

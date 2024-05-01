@@ -2,12 +2,13 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUI.LMS.Views.InstructorView"
+             Shell.BackgroundColor="MidnightBlue" 
+             Shell.TitleColor="White"
              Title="Instructor Page"
              NavigatedTo="ContentPage_NavigatedTo"
              >
-
     <ContentPage.ToolbarItems>
-        <ToolbarItem
+        <ToolbarItem 
             Text="Enrollments"
             Clicked="Toolbar_EnrollmentsClicked"
             />
@@ -32,7 +33,7 @@
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
             <ListView
-                 ItemsSource="{Binding People}"
+                 ItemsSource="{Binding EnrolledStudents}"
                  SelectedItem="{Binding SelectedPerson, Mode=TwoWay}">
             <!--<ListView.ItemTemplate>
                      <DataTemplate
@@ -57,6 +58,7 @@
             <Button
                 Text="Back"
                 Clicked="BackClicked"
+                BackgroundColor="DeepSkyBlue"
                 />  
         </VerticalStackLayout>
 
@@ -86,6 +88,7 @@
             <Button
                 Text="Back"
                 Clicked="BackClicked"
+                BackgroundColor="DeepSkyBlue"
                 />
 
         </VerticalStackLayout>

@@ -17,13 +17,12 @@ namespace Library.LMS.Models
         public Student()
         { Grades = new Dictionary<int, double>(); }
         
-        public Student(string _name, StudentClassification cl)
-        { 
-            Grades = new Dictionary<int, double>();
-            Classification = cl;
-            Name = _name;
-            Id = newId(_name);
-        }
+        //public Student(string _name, StudentClassification cl)
+        //{ 
+        //    Grades = new Dictionary<int, double>();
+        //    Classification = cl;
+        //    Name = _name;
+        //}
 
         public enum StudentClassification
         {
@@ -35,41 +34,5 @@ namespace Library.LMS.Models
             return $"[{Id}] {Name} - {Classification}";
         }
 
-        private string newId(string _name)
-        {
-            _name = _name.ToLower();
-            string id = string.Empty;
-
-            if (char.IsLetter(_name[0]))
-                id += _name[0];
-
-            for (int i = 1; i < _name.Length; ++i)
-            {
-                if (_name[i] == ' ')
-                {
-                    id += _name[++i];
-                }
-            }
-
-            int currentYear = DateTime.Now.Year;
-            id += currentYear.ToString().Substring(2);
-
-            id = lastValidId(id);
-
-            return id;
-        }
-
-        private string lastValidId(string id)
-        {
-            foreach (Student s in StudentService.Current.Students)
-            {
-                if (s.Id == id)
-                {
-                    id += 'a';
-                }
-            }
-
-            return id;
-        }
     }
 }
